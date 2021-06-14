@@ -15,60 +15,34 @@ class _DashboardState extends State<Dashboard> {
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth > 1200) {
           return Scaffold(
-            body: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: constraints.maxWidth*0.05,
-                vertical: constraints.maxHeight*0.05
-              ),
+            backgroundColor: Colors.deepPurpleAccent,
+            body: Center(
               child: Card(
+                margin: EdgeInsets.symmetric(horizontal: constraints.maxWidth*0.1),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: constraints.maxHeight*0.9,
                       width: constraints.maxWidth*0.25,
-                      child: ListView(
-                        children: [
-                          ListTile(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return ListTile(
                             leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                "https://cdn.icon-icons.com/icons2/1736/PNG/512/4043260-avatar-male-man-portrait_113269.png"
-                              ),
+                              backgroundImage: AssetImage("avatar.png"),
                             ),
                             title: Text(
                               "Goblu"
                             ),
-                            subtitle: Text(
-                              "Last Message!!"
-                            ),  
-                          ),
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                "https://www.nicepng.com/png/detail/186-1866063_dicks-out-for-harambe-sample-avatar.png"
+                            subtitle: Container(
+                              margin: EdgeInsets.symmetric(vertical: 4.0),
+                              child: Text(
+                                "Last Message!!"
                               ),
-                            ),
-                            title: Text(
-                              "Goblu"
-                            ),
-                            subtitle: Text(
-                              "Last Message!!"
-                            ),  
-                          ),
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                "https://www.nicepng.com/png/detail/186-1866063_dicks-out-for-harambe-sample-avatar.png"
-                              ),
-                            ),
-                            title: Text(
-                              "Goblu"
-                            ),
-                            subtitle: Text(
-                              "Last Message!!"
-                            ),  
-                          ),
-                        ],
-                      ),
+                            )
+                          );
+                        }
+                      )
                     ),
                     SizedBox(
                       height: constraints.maxHeight*0.9,
