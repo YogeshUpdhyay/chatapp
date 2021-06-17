@@ -1,16 +1,19 @@
+import 'package:chatapp/components/chatviewsettings.dart';
 import 'package:flutter/material.dart';
 import 'chat.dart';
 
+// ignore: must_be_immutable
 class ChatView extends StatelessWidget {
-  final height;
-  final width;
+  var height;
+  var width;
   
-  const ChatView({
+  ChatView({
     Key? key, this.height, this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(
       height: height,
       width: width,
