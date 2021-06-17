@@ -1,18 +1,27 @@
+import 'package:chatapp/controller/chat.dart';
 import 'package:flutter/material.dart';
 
-class Chats extends StatelessWidget {
+class Chats extends StatefulWidget {
   final height;
   final width;
   
-  const Chats({
+  Chats({
     Key? key, this.height, this.width,
   }) : super(key: key);
 
   @override
+  _ChatsState createState() => _ChatsState();
+}
+
+class _ChatsState extends State<Chats> {
+  ChatController controller = ChatController();
+
+  @override
   Widget build(BuildContext context) {
+
     return SizedBox(
-      height: height,
-      width: width,
+      height: widget.height,
+      width: widget.width,
       child: Column(
         children: [
           ListTile(
@@ -32,23 +41,30 @@ class Chats extends StatelessWidget {
             tileColor: Colors.deepPurpleAccent,
           ),
           Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(backgroundImage: AssetImage("avatar.png"),),
-                  title: Text("Goblu"),
-                  subtitle: Container(
-                    margin: EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      "Last Message!!"
-                    ),
-                  ),
-                  onTap: () => Navigator.of(context).pushNamed("/chatview", arguments: {
-                    height: height,
-                    width: width
-                  }),
-                );
-              }
+            child: FutureBuilder(
+              future: controller.getChats(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: CircleAvatar(backgroundImage: AssetImage("avatar.png"),),
+                        title: Text("Goblu"),
+                        subtitle: Container(
+                          margin: EdgeInsets.symmetric(vertical: 4.0),
+                          child: Text(
+                            "Last Message!!"
+                          ),
+                        ),
+                        onTap: () {}
+                      );
+                    }
+                  );
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+              
             ),
           ),
         ],
