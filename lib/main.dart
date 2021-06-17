@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chat App',
       home: Dashboard(),
+      routes: {
+        '/chatview': (context) => Scaffold(body: SafeArea(child: ChatView(),),) 
+      },
     );
   }
 }

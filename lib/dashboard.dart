@@ -24,7 +24,7 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Chats(height: constraints.maxHeight*0.9, width: constraints.maxWidth*0.25),
-                    ChatView(constraints: constraints,)
+                    ChatView(height: constraints.maxHeight*0.9, width: constraints.maxWidth*0.55)
                   ],
                 ),
               ),
@@ -46,17 +46,18 @@ class _DashboardState extends State<Dashboard> {
 }
 
 class ChatView extends StatelessWidget {
-  final constraints;
+  final height;
+  final width;
   
   const ChatView({
-    Key? key, this.constraints,
+    Key? key, this.height, this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: constraints.maxHeight*0.9,
-      width: constraints.maxWidth*0.55,
+      height: height,
+      width: width,
       child: Column(
         children: [
           ListTile(
@@ -116,7 +117,10 @@ class Chats extends StatelessWidget {
                       "Last Message!!"
                     ),
                   ),
-                  // onTap: () => Navigator.of(context).push(),
+                  onTap: () => Navigator.of(context).pushNamed("/chatview", arguments: {
+                    height: height,
+                    width: width
+                  }),
                 );
               }
             ),
