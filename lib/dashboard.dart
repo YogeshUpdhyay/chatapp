@@ -25,23 +25,41 @@ class _DashboardState extends State<Dashboard> {
                     SizedBox(
                       height: constraints.maxHeight*0.9,
                       width: constraints.maxWidth*0.25,
-                      child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: AssetImage("avatar.png"),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            contentPadding: EdgeInsets.symmetric(vertical: 8.0),
+                            leading: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: CircleAvatar(backgroundImage: AssetImage('avatar.png'),)
                             ),
-                            title: Text(
-                              "Goblu"
+                            trailing: Wrap(
+                              children: [
+                                IconButton(onPressed: () {}, icon: Icon(Icons.chat), color: Colors.white,),
+                                SizedBox(width: 5.0,),
+                                IconButton(onPressed: () {}, icon: Icon(Icons.more_vert), color: Colors.white,),
+                                SizedBox(width: 5.0,)
+                              ]
                             ),
-                            subtitle: Container(
-                              margin: EdgeInsets.symmetric(vertical: 4.0),
-                              child: Text(
-                                "Last Message!!"
-                              ),
-                            )
-                          );
-                        }
+                            tileColor: Colors.deepPurpleAccent,
+                          ),
+                          Expanded(
+                            child: ListView.builder(
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  leading: CircleAvatar(backgroundImage: AssetImage("avatar.png"),),
+                                  title: Text("Goblu"),
+                                  subtitle: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 4.0),
+                                    child: Text(
+                                      "Last Message!!"
+                                    ),
+                                  )
+                                );
+                              }
+                            ),
+                          ),
+                        ],
                       )
                     ),
                     SizedBox(
@@ -56,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
                             trailing: IconButton(icon: Icon(Icons.more_horiz), onPressed: () {}, color: Colors.white,),
                             tileColor: Colors.deepPurpleAccent,
                           ),
-                          ChatPage(),
+                          Expanded(child: ChatPage()),
                         ],
                       )
                     )
