@@ -10,7 +10,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  final messages;
+
+  const ChatPage({Key? key, this.messages}) : super(key: key);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -158,8 +160,8 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _loadMessages() async {
-    final response = await rootBundle.loadString('messages.json');
-    final messages = (jsonDecode(response) as List)
+    
+    final messages = (widget.messages as List)
         .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
         .toList();
 

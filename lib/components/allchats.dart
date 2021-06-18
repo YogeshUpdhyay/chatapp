@@ -1,6 +1,8 @@
 import 'package:chatapp/controller/chat.dart';
 import 'package:flutter/material.dart';
 
+import 'chatview.dart';
+
 class Chats extends StatefulWidget {
   final height;
   final width;
@@ -15,6 +17,16 @@ class Chats extends StatefulWidget {
 
 class _ChatsState extends State<Chats> {
   ChatController controller = ChatController();
+
+  ontapfunc (id, context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return Scaffold(body: SafeArea(child: ChatView(
+        height: widget.height,
+        width: widget.width,
+        id: id
+      ),));
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +55,20 @@ class _ChatsState extends State<Chats> {
           Expanded(
             child: FutureBuilder(
               future: controller.getChats(),
-              builder: (context, snapshot) {
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
+                  List<dynamic> data = snapshot.data;
                   return ListView.builder(
+                    itemCount: data.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: CircleAvatar(backgroundImage: AssetImage("avatar.png"),),
-                        title: Text("Goblu"),
+                        leading: CircleAvatar(backgroundImage: NetworkImage(data[index]['avatar']),),
+                        title: Text(data[index]['name']),
                         subtitle: Container(
                           margin: EdgeInsets.symmetric(vertical: 4.0),
-                          child: Text(
-                            "Last Message!!"
-                          ),
+                          child: Text(data[index]['lastMessage']),
                         ),
-                        onTap: () {}
+                        onTap: () => ontapfunc(data[index]['id'], context)
                       );
                     }
                   );
