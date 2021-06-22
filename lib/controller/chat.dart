@@ -4,6 +4,7 @@ class ChatController {
   Future<List<dynamic>?> getChats() async {
     try {
       var dio = Dio();
+      dio.options.headers['Access-Control-Allow-Origin'] = ["*"];
       final response = await dio.get("http://192.168.43.129:8000/chats");
       if (response.statusCode == 200) {
         return response.data;
@@ -19,7 +20,7 @@ class ChatController {
   Future<Map<dynamic, dynamic>?> getChat(id) async {
     try {
       var dio = Dio();
-      print("http://192.168.43.129:8000/chat/$id");
+      dio.options.headers['Access-Control-Allow-Origin'] = ["*"];
       final response = await dio.get("http://192.168.43.129:8000/chat/$id");
       if (response.statusCode == 200) {
         return response.data;

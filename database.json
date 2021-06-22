@@ -3,48 +3,48 @@
         {
             "id": 1,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "id": 2,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "id": 3,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "id": 4,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "id": 5,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         },
         {
             "id": 6,
             "avatar": "https://i.imgur.com/1o1zEDM.png",
-            "name": "Goblu",
+            "name": "User",
             "lastMessage": "This is the last message"
         }
     ],
     "/chat/1": {
         "id": 1,
-        "name": "Goblu Gobli",
+        "name": "User",
         "avatar": "https://i.imgur.com/1o1zEDM.png",
         "messages": [
             {
